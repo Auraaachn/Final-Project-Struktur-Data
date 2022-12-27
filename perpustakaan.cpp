@@ -90,9 +90,9 @@ void enqueue(data ib){
 }
 
 void dequeue(){
-  inti;
+  int i;
   ambilfile();
-  for(i=1;i<enqueue.belakang;i++)
+  for(i=1;i<queue.belakang;i++)
   {
     queue.elemen[i]=queue.elemen[i+1];
   }
@@ -100,38 +100,7 @@ void dequeue(){
   hapusdata();
   updatedata();
 }
-
-void gantidata(int noganti){
-  data ganti;
-  bool x=0;
-  ambilfile();
-  for(int i=1;i<queue.belakang.;i++)
-    {
-      if(queue.elemen[i).nobook==noganti)
-      {
-        cout<<"Ubah data menjadi\n";
-        cout<<"Nama Peminjam :";
-        cin.ignore();
-        cin.getline(ganti.nama,50);
-        cout<<"No Buku:";
-        cin>>ganti.nobook;
-        cout<<"Judul Buku :";
-        cin.getline(ganti.judul,100);
-        cout<<"No Telp :";
-        cin>>ganti.no;
-        queue.elemen[i]=ganti;
-        x=1;
-      }
-    }
-    if(x==0)
-    {
-      cout<<"Data Tidak Ditemukan";
-      queue.elemen[i]=ganti;
-      x=1;
-    }
-}
-                      
-                      
+                                       
  void hapus()
 {
   int x;
@@ -164,7 +133,38 @@ void updatedata()
   fclose(x);
   
 }
-                      
+
+void gantidata(int noganti){
+  data ganti;
+  bool x=0;
+  int i,j;
+  ambilfile();
+  for(i=1;i<queue.belakang;i++)
+    {
+      if(queue.elemen[i].nobook==noganti)
+      {
+        cout<<"\n\tUbah data menjadi\n";
+        cout<<"\tNama Peminjam :";
+        cin.ignore();
+        cin.getline(ganti.nama,50);
+        cout<<"\tNo Buku:";
+        cin>>ganti.nobook;
+        cout<<"\tJudul Buku :";
+        cin.ignore();
+        cin.getline(ganti.judul,100);
+        cout<<"\tNo Telp :";
+        cin>>ganti.no;
+        queue.elemen[i]=ganti;
+        x=1;
+      }
+    }
+    if(x==0)
+    {
+      cout<<"\tData Tidak Ditemukan";
+    }
+    hapusdata();
+    updatedata();
+}
                     
 int main() {
   int pilih,x,y,cari,noganti;
